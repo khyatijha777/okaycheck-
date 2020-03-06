@@ -1,0 +1,29 @@
+TABLES:
+
+1- user_details
+2- todoes
+
+
+
+USER_DETAILS:
+
+u_id,  int,  not null, primary key
+first name varchar not null
+first name varchar not null
+user name varchar not null unique
+{% comment %} dob datetime not null {% endcomment %}
+email varchar not null unique
+phone_no int 
+password password not null
+display_image image 
+
+TODOES:
+
+id int not-null unique auto-incremented primary-key
+date_created date not null
+time_creates time not null 
+data text not null
+done boolena not null
+complete_by_date date 
+complete_by_time time 
+u_id foreign-key
