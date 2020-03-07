@@ -2,46 +2,50 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
     <title>Document</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo-box">
-        <img src="{% static 'imgs/icon.png'%}" alt="OkayCheck!" class="logo" />
-        <ul class="list">
-          <li class="inline-list">Home</li>
-          <li class="inline-list">Gallery</li>
-          <li class="inline-list">Profile</li>
-          <li class="inline-list">Help</li>
-        </ul>
-      </div>
-      <div class="header-data">
-        <span class="main">
-          OKAYCHECK!
-        </span>
-        <span class="secondary">
-          TO EVERY TASK
-        </span>
-        <a href="#" class="btn btn-white">
-          Start Now
-        </a>
-      </div>
-    </header>
-    {% block content%} {%endblock%}
-    <footer class="footer">
-      <div class="logo-box">
-        <img src="{% static 'imgs/icon.png'%}" alt="OkayCheck!" class="logo" />
-      </div>
+</head>
+<body>
+    <header class= 'header'>
+        <div class="logo-box">
+            <img src="{% static 'imgs/icon.png'%}" alt="OkayCheck!" class= "logo">
+        </div>
+        <div class="header-data">
+            <span class="main">
+                OKAYCHECK!
+            </span>
+            <span class="secondary">
+                TO EVERY TASK
+            </span>
+            <a href="#" class="btn btn-white">
+                Start Now
+            </a>
+        </div>
 
-      <div class="row">
-        <a href="#" class="col-1-3">Help & Support</a>
-        <a href="#" class="col-1-3">Terms</a>
-        <a href="#" class="col-1-3">Privacy Policy</a>
-      </div>
+        <ul>
+            <li>Home</li>
+            <li>Gallery</li>
+            <li>Profile</li>
+            <li>Help</li>
+        </ul>
+    </header>
+    {% block content%}
+    {%endblock%}
+    <footer class = "footer">
+        <div class="logo-box">
+            <img src="{% static 'imgs/icon.png'%}" alt="OkayCheck!" class= "logo">
+        </div>
+
+        <div class="row">
+            
+                <a href="#" class="col-1-3">Help & Support</a>
+                <a href="#" class="col-1-3">Terms</a>
+                <a href="#" class="col-1-3">Privacy Policy</a>
+            
+        </div>
     </footer>
-  </body>
+</body>
 </html>
