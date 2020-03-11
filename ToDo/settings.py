@@ -26,13 +26,18 @@ SECRET_KEY = '5=r%o5j3hsv#24r!0q8)&#37o3=jb6d5_&d)d6=@@1r-$y6qfc'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+AUTH_PROFILE_MODULE = 'login.Login'
 # Application definition
-
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
-    'login.apps.LoginConfig',
+    'login',
+    'home',
+    # 'user_profile',
+    'gallery',
+    'account',
+    # 'todo_calendar',
+    'user_profile.apps.UserProfileConfig',
+    # 'home.apps.HomeConfig',
+    # 'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +63,7 @@ TEMPLATES = [
     {
 
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +85,7 @@ WSGI_APPLICATION = 'ToDo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'okaycheckdb',
+        'NAME': 'todo',
         'USER': 'postgres',
         'PASSWORD': 'ps',
         'HOST': 'localhost'
