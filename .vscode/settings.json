@@ -1,0 +1,7 @@
+{
+    "python.linting.ignorePatterns": [
+        ".vscode/*.py",
+        "**/site-packages/**/*.py",
+        "\"python.linting.pylintArgs\": ['--errors-only']"
+    ]
+}

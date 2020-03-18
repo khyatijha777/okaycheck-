@@ -1,0 +1,10 @@
+.modal-content{
+    /* background-color: darkcyan; */
+    background-image: linear-gradient(to right, #2c668d,#42c794);
+}
+.btn-link{
+    color:white;
+}
+.modal-heading h2{
+    color:#ffffff;
+}
