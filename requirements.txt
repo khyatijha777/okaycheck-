@@ -10,7 +10,7 @@ certifi==2018.1.18
 chardet==3.0.4
 # command-not-found==0.3
 cryptography==2.1.4
-cupshelpers==1.0
+# cupshelpers==1.0
 defer==1.0.6
 distlib==0.3.0
 distro-info==0.18
@@ -78,7 +78,7 @@ reportlab==3.4.0
 requests==2.18.4
 requests-unixsocket==0.1.5
 rjsmin==1.1.0
-safeeyes==2.0.9
+# safeeyes==2.0.9
 SecretStorage==2.3.1
 simplejson==3.13.2
 six==1.14.0
@@ -94,9 +94,8 @@ urllib3==1.22
 usb-creator==0.3.3
 virtualenv==20.0.4
 wadllib==1.3.2
-whitenoise==5.0.1
+# whitenoise==5.0.1
 wrapt==1.11.2
 xkit==0.0.0
 zipp==3.0.0
 zope.interface==4.3.2
-Python==3.6.9
