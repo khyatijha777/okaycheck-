@@ -17,7 +17,9 @@
     <!-- Custom style for this template -->
     <link href="{% static 'css/style.css'%}" rel="stylesheet">
     <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet">
-    <link rel="stylesheet" {% static 'href="css/to-do.css'%}">
+    <link rel="stylesheet" href='{% static "css/to-do.css"%}'>
+    <link rel="stylesheet" href='{% static "css/date_time.css"%}'>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,16 +31,14 @@
   <body>
 
   <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
+      
+      <!-- header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>OkayCheck!</b></a>
+            <a href="{%url 'home'%}" class="logo"><b>OkayCheck!</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -46,9 +46,30 @@
                 <!--  notification end -->
             </div>
             <div class="top-menu">
+                
+                {%if user.is_authenticated%}
+
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="{% url 'login' %}">Logout</a></li>
+                    <li>
+                    <a class="logout" href="javascript:{document.getElementById('logout').submit() }"> 
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> {{user.username}}
+                    </a>
+                    <form action="{% url 'logout'%}" id="logout" method="POST">
+                        {%csrf_token%}
+                        <input type="hidden" >
+                    </form>
+                    </li>
+            	
+                </ul>
+                
+                {%else%}
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="{% url 'register' %}">Register</a></li>
             	</ul>
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="{% url 'login' %}">LogIn</a></li>
+            	</ul>
+                {%endif%}
             </div>
         </header>
       <!--header end-->
@@ -71,12 +92,14 @@
                           <span>Dashboard</span>
                       </a>
                   </li>
-                  <li class="">
+
+                  {% comment %} add this sectin in next version to add gallery {% endcomment %}
+                  {% comment %} <li class="">
                       <a href="{% url 'gallery:gallery'%}">
                           <i class="fa fa-camera"></i>
                           <span>Gallery</span>
                       </a>
-                  </li>
+                  </li> {% endcomment %}
                   {% comment %} <li class="">
                       <a href="{% url 'todo_calendar:calendar'%}">
 

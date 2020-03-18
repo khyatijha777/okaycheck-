@@ -1,5 +1,5 @@
 from django.db import models
-from login.models import Login
+from django.contrib.auth.models import User
 # Create your models here.
 '''COnatins list to tasks'''
 class ToDo(models.Model):
@@ -10,7 +10,7 @@ class ToDo(models.Model):
     done = models.BooleanField()
     complete_by_date = models.DateField(auto_now=False, auto_now_add=False)
     complete_by_time = models.TimeField(auto_now=False, auto_now_add=False)
-    u_id = models.ForeignKey(Login, on_delete=models.CASCADE)
+    u_id = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.data[:12]
         
