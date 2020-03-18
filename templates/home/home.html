@@ -5,57 +5,79 @@
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
+     <section id="main-content">
           <section class="wrapper">
-          	<h3></i> <i class="fa fa-tasks"></i> Todo List </h3>
+          	<h3><i class="fa fa-angle-right"></i> To-Do Lists</h3>
           	
+          	
+
           	<!-- COMPLEX TO DO LIST -->			
               <div class="row mt">
                   <div class="col-md-12">
                       <section class="task-panel tasks-widget">
-	                	
+	                	<div class="panel-heading">
+	                        <div class="pull-left"><h5><i class="fa fa-tasks"></i> Todo List </h5></div>
+	                        <br>
+	                 	</div>
                           <div class="panel-body">
                               <div class="task-content">
 
                                   <ul class="task-list">
-                                  {% if data %}
-                                      {% for task in data %}
-                                        <li>
+                                      {%for task in data%}
+                                      <li>
                                           <div class="task-checkbox">
                                               <input type="checkbox" class="list-child" value=""  />
                                           </div>
                                           <div class="task-title">
                                               <span class="task-title-sp">{{task.data}}</span>
-                                              <span class="badge bg-theme">{{task.complete_by_date}}</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
-                                               
-                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              <span class="badge bg-important">{{task.complete_by_date}}</span>
+                                              <span class="badge bg-info">{{task.complete_by_time}}</span>
+
+                                              <div class="pull-right">
+                                                  <!-- <a onclick = "check_task(task.id)" class="btn btn-success btn-xs"><i class=" fa fa-check"></i></a>
+                                                    add this line of code when editing in task is reuired
+                                                    <a onclick = "edit_task(task.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a> -->
+                                              <a href = "{% url 'delete_task' task.todo_id %}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                               </div>
                                           </div>
-                                        </li>
-                                      {% endfor %}  
-                                  {% else %}
-                                  
-                                      {% endif %}
-                                                                
+                                      </li>  
+                                      {%endfor%}                                    
                                   </ul>
                               </div>
-
-                              <div class=" add-task-row">
-                                  <a class="btn btn-success btn-sm pull-left" href="#">Add New Tasks</a>
-                                  <a class="btn btn-default btn-sm pull-right" href="#">See All Tasks</a>
+                                <!-- form to add new tasks -->
+                              <div id='new_task'>
+                                <form  action="{% url 'home'%}" method ="POST">
+                                    {% csrf_token %}
+                                    <input type="text"  name="data">
+                                    <input type="date" id="dateofbirth" value={{date_today}} name="complete_by_date">
+                                    <input type="time" value={{time_now}} name="complete_by_time">
+                                    <input class="btn btn-success btn-sm " type="submit" value="Add new task" name="submit" onclick="hide()">
+                                </form>
+                              </div>
+                              <div class='add-task-row'>
+                                  <button class="btn btn-success btn-sm pull-left" id="add_task_button" onclick ="addTask()">Add New Tasks</button>
+                                  <!-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a> -->
                               </div>
                           </div>
                       </section>
                   </div><!-- /col-md-12-->
               </div><!-- /row -->
-			
-			
-		</section><! --/wrapper -->
+		</section>
       </section><!-- /MAIN CONTENT -->
 
+     
       <!--main content end-->
+    <script>
+        function addTask(){
+            document.getElementById('new_task').style.display="block";
+            document.getElementById("add_task_button").style.display="none";
+        }
+
+        function hide(){
+            document.getElementById("new_task").style.display="none";
+            document.getElementById("add_task_button").style.display="block";
+
+        }
+        
+    </script>
 {%endblock%}
