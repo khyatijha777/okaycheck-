@@ -95,7 +95,7 @@ urllib3==1.22
 # usb-creator==0.3.3
 virtualenv==20.0.4
 wadllib==1.3.2
-# whitenoise==5.0.1
+whitenoise==5.0.1
 wrapt==1.11.2
 # xkit==0.0.0
 zipp==3.0.0
