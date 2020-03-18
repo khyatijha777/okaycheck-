@@ -25,7 +25,7 @@ SECRET_KEY = '5=r%o5j3hsv#24r!0q8)&#37o3=jb6d5_&d)d6=@@1r-$y6qfc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
 AUTH_PROFILE_MODULE = 'login.Login'
 # Application definition
 INSTALLED_APPS = [
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 # ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,3 +130,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ToDo', 'static')]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+#for deployment
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
