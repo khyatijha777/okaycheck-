@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 # ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,3 +133,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 #for deployment
 django_heroku.settings(locals())
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
