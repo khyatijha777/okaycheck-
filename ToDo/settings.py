@@ -131,5 +131,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ToDo', 'static')]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 #for deployment
-#  Add configuration for static files storage using whitenoise
 django_heroku.settings(locals())
